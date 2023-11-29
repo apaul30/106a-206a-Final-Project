@@ -14,6 +14,25 @@ floor.y = -.5
 floor.x = .5
 floor.z = .5
 
+# make the (0,0,0) floor tile red
+red_tile = Entity(model='quad', scale=(1, 1), color=color.red)
+red_tile.rotation_x = 90  # Rotate 90 degrees along the X-axis
+red_tile.x = 0
+red_tile.y = -.45
+red_tile.z = 0
+
+red_tile = Entity(model='quad', scale=(1, 1), color=color.blue)
+red_tile.rotation_x = 90  # Rotate 90 degrees along the X-axis
+red_tile.x = 1
+red_tile.y = -.45
+red_tile.z = 0
+
+red_tile = Entity(model='quad', scale=(1, 1), color=color.green)
+red_tile.rotation_x = 90  # Rotate 90 degrees along the X-axis
+red_tile.x = 0
+red_tile.y = -.45
+red_tile.z = 1
+
 
 def input(key):
     if key == 'left mouse down':
