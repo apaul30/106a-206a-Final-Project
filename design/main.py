@@ -9,6 +9,7 @@ matrix = [[[None for _ in range(n)] for _ in range(n)] for _ in range(n)]
 
 
 cube_list = []
+layer_list = []
 floor = Entity(model='plane', scale=n, texture='white_cube', texture_scale=(n, n), collider='box')
 floor.y = -.5
 floor.x = .5
@@ -54,6 +55,7 @@ def input(key):
             )
         matrix[position_pos[0]][i][position_pos[2]] = cube
         position = position[0], i, position[2]
+        layer_list.append(position)
         
 
 editor_camera = EditorCamera()
@@ -77,12 +79,6 @@ def update():
         exit(0)
 
 def export():
-    layer_list = []
-    for i in range(n):
-        for j in range(n):
-            for k in range(n):
-                if matrix[i][j][k] != None:
-                    layer_list.append([i, j, k])
     # save to file
     data = {'data': layer_list}
     with open('model.json', 'w') as f:

@@ -25,7 +25,7 @@ def adjust_coordinates(side_length=.04, offset=0, origin=[0,-0.08,0], filename="
         adjusted_blocks.append((adjusted_x, adjusted_y, adjusted_z))
 
     # sort by z, then y, then x
-    adjusted_blocks.sort(key=lambda block: (block[2], block[1], block[0]))
+    # adjusted_blocks.sort(key=lambda block: (block[2], block[1], block[0]))
 
     # return as numpy array
     adjusted_blocks = np.array(adjusted_blocks)
