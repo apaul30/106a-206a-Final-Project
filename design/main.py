@@ -8,7 +8,6 @@ n = 10
 matrix = [[[None for _ in range(n)] for _ in range(n)] for _ in range(n)]
 
 
-cube_list = []
 layer_list = []
 floor = Entity(model='plane', scale=n, texture='white_cube', texture_scale=(n, n), collider='box')
 floor.y = -.5
@@ -56,6 +55,19 @@ def input(key):
         matrix[position_pos[0]][i][position_pos[2]] = cube
         position = position[0], i, position[2]
         layer_list.append(position)
+
+    if key == 'right mouse down':
+        # delete cube at mouse position
+        position = mouse.world_point
+        position = round(mouse.world_point[0]), round(mouse.world_point[1]), round(mouse.world_point[2])
+        position_pos = [round(position[0] * -1), round(position[1]), round(position[2] * -1)]
+        i = round(position[1])
+        while matrix[position_pos[0]][i][position_pos[2]] == None:
+            i += 1
+            position_pos = [round(position[0] * -1), round(position[1]), round(position[2] * -1)]
+        destroy(matrix[position_pos[0]][i][position_pos[2]])
+        matrix[position_pos[0]][i][position_pos[2]] = None
+        layer_list.remove(position)
         
 
 editor_camera = EditorCamera()
