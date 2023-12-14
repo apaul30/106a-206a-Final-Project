@@ -62,16 +62,12 @@ def input(key):
         position = round(mouse.world_point[0]), round(mouse.world_point[1]), round(mouse.world_point[2])
         position_pos = [round(position[0] * -1), round(position[1]), round(position[2] * -1)]
         i = round(position[1])
-        try:
-            while matrix[position_pos[0]][i][position_pos[2]] == None:
-                i += 1
-                position_pos = [round(position[0] * -1), round(position[1]), round(position[2] * -1)]
-            destroy(matrix[position_pos[0]][i][position_pos[2]])
-            matrix[position_pos[0]][i][position_pos[2]] = None
-        
-            layer_list.remove(position)
-        except:
-            pass
+        while matrix[position_pos[0]][i][position_pos[2]] == None:
+            i += 1
+            position_pos = [round(position[0] * -1), round(position[1]), round(position[2] * -1)]
+        destroy(matrix[position_pos[0]][i][position_pos[2]])
+        matrix[position_pos[0]][i][position_pos[2]] = None
+        layer_list.remove(position)
         
 
 editor_camera = EditorCamera()
